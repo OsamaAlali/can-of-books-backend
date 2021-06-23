@@ -10,14 +10,19 @@ const {
     createBook,
      updateBook,
     deleteBook} = require('./controller/book.controller')
+
 const PORT = process.env.PORT
+
+const MONGO_DB_BOOK= process.env.MONGO_DB_BOOK
+
 const cors =require('cors');
 app.use(cors())
 
 app.use(express.json());
 
 const {seedUserData}=require('./models/user')
-mongoose.connect('mongodb://localhost:27017/book',
+
+mongoose.connect(MONGO_DB_BOOK,
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
